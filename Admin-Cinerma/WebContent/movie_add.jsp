@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 
-<form name="form1" method="post" action="add_ok.jsp">
+<form name="form1" method="post" action="movie_addCheck.jsp">
     
       <table width="300" border="0" align="center" cellpadding="0" cellspacing="10">
         <tr>
@@ -63,12 +63,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td width="353"><input name="picture_url" type="text" id="picture_url"></td>
         </tr>
    		
-        <tr>
-          <td>
-            <input type="submit" name="Submit" value="新增" >
-          </td>
+        <tr>          
           <td>
             <input type="reset" name="Submit2" value="清除">
+          </td>
+          <td>
+            <input type="submit" name="Submit" value="新增" >
           </td>
         </tr>
     </table>

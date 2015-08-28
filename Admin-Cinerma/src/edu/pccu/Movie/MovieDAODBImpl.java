@@ -98,16 +98,17 @@ public class MovieDAODBImpl implements MovieDAO {
             ppstemt.setString(6, movie.get_actor());
             ppstemt.setString(7, movie.get_director());
             ppstemt.setString(8, movie.get_picture_url());
-
             count = ppstemt.executeUpdate();
             ppstemt.cancel();
             conn.close();
+            return count;
+            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return count;
+		return -1;        
     }
 
     @Override
@@ -144,7 +145,43 @@ public class MovieDAODBImpl implements MovieDAO {
         }
 
     }
+    //華郁    
+    @Override
+	public int update_Movie2(Movie movie) {
+    	int count = 0;
+    	try {
+            Class.forName(DRIVER_NAME);  // 把符合的API 全部都進來 但是會有 expection , try catach 去擷取
+            Connection conn = DriverManager.getConnection(CONN_STRING);
+            String query = "Update movie_Info set "
+                    + "movie_name_chinese = ?, movie_name_eng = ?, release_date = ?, "
+                    + "version = ?,movie_length = ?, actor = ?, director = ?, picture_url = ? "
+                    + "where movie_no = ?";
 
+            //String query_find = "Update movie_Info set students_name = ?, students_phone = ? where students_id = ?";
+            PreparedStatement ppstemt = conn.prepareStatement(query);
+            //ppstemt.setInt(1, student.student_Id);
+            ppstemt.setString(1, movie.get_m_name_c());
+            ppstemt.setString(2, movie.get_m_name_e());
+            ppstemt.setString(3, movie.get_release_date());
+            ppstemt.setString(4, movie.get_version());
+            ppstemt.setInt(5, movie.get_m_length());
+            ppstemt.setString(6, movie.get_actor());
+            ppstemt.setString(7, movie.get_director());
+            ppstemt.setString(8, movie.get_picture_url());
+            ppstemt.setInt(9, movie.get_m_no());
+            count = ppstemt.executeUpdate();
+            ppstemt.cancel();
+            conn.close();
+            return count;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		return -1;
+	}
+    
     @Override
     public void remove_Movie(Movie movie) {
         try {
@@ -164,7 +201,29 @@ public class MovieDAODBImpl implements MovieDAO {
             Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    //華郁
+    @Override
+	public int remove_Movie2(Movie movie) {
+    	int count = 0;
+    	try {
+            Class.forName(DRIVER_NAME);  // 把符合的API 全部都進來 但是會有 expection , try catach 去擷取
+            Connection conn = DriverManager.getConnection(CONN_STRING);
+            String query_find = "Delete from movie_Info where movie_no = ?";
+            PreparedStatement ppstemt = conn.prepareStatement(query_find);
+            //ppstemt.setInt(1, student.student_Id);
+            ppstemt.setInt(1, movie.get_m_no());
+            count = ppstemt.executeUpdate();
+            ppstemt.cancel();
+            conn.close();
+            return count;
 
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		return -1;
+	}
     @Override
     public Movie findById_name_c(String movie_name_chinese) {
         try {
@@ -319,4 +378,6 @@ public class MovieDAODBImpl implements MovieDAO {
     public ArrayList<Customer> getAllCustomers() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+	
+	
 }

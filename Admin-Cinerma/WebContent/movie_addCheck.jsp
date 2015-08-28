@@ -1,6 +1,6 @@
-<%@page import="edu.pccu.Movie.MovieDAODBImpl"%>
+<%-- <%@page import="edu.pccu.Movie.MovieDAODBImpl"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="edu.pccu.Movie.*,java.util.*"%>
+	pageEncoding="UTF-8" import="java.text.*,edu.pccu.Movie.*,java.util.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -28,14 +28,8 @@
 		String director = request.getParameter("director");
 		String picture_url = request.getParameter("picture_url");
 		MovieDAO dao = new MovieDAODBImpl();		
-		Movie add_movie = new Movie(movie_name_chinese, 
-									movie_name_eng, 
-									release_date, 
-									version, 
-									movie_length, 
-									actor,
-									director, 
-									picture_url);
+		Movie add_movie = new Movie(movie_name_chinese, movie_name_eng, release_date, version, movie_length, actor,
+				director, picture_url);
 		int count = dao.add1(add_movie);
 		if (count != 0) {
 			out.print(count + "筆資料新增成功！");
