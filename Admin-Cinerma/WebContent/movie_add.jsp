@@ -13,7 +13,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>新增電影資訊</title>
  <meta http-equiv="pragma" content="no-cache">
  <meta http-equiv="cache-control" content="no-cache">
- <meta http-equiv="expires" content="0">    
+ <meta http-equiv="expires" content="0">
+<!--  以下2行為日期的元件 -->
+ <link href="CalendarControl.css" rel="stylesheet" type="text/css">
+ <script src="CalendarControl.js" language="javascript"></script>
+ 
 <!--  <meta http-equiv="keywords" content="jsp,信息添加">
  <meta http-equiv="description" content="www.xin126.cn原创教程：JSP员工信息添加页面：add_employee.jsp"> -->
 </head>
@@ -39,8 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tr>
           <td>上映日期：</td>
           <td>
-            <input name="release_date" type="text" id="release_date">
+            <input name="release_date" type="text" id="release_date" value="日期" onfocus="showCalendarControl(this);">
             （格式 1981-01-01）
+            <!-- <input name="todays_date" id="todays_date" class="search-s2 icon-mov" value="日期" onfocus="showCalendarControl(this);" type="text"> -->
           </td>
         </tr>
         <tr>

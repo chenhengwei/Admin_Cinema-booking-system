@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>修改電影資訊</title>
+<!--  以下2行為日期的元件 -->
+ <link href="CalendarControl.css" rel="stylesheet" type="text/css">
+ <script src="CalendarControl.js" language="javascript"></script>
 </head>
 <body>
 	<%
@@ -35,22 +38,23 @@
 			<tr>
 				<td width="185" height="23">電影名稱(中文)：<br></td>
 				<td width="353"><input name="movie_name_chinese" type="text"
-					id="movie_name_chinese" value=<%=movie.get_m_name_c()%>></td>
+					id="movie_name_chinese" value=<%=movie.get_m_name_c().trim()%>></td>
 			</tr>
 			<tr>
 				<td width="185" height="23">電影名稱(原文)：<br></td>
 				<td width="353"><input name="movie_name_eng" type="text"
-					id="movie_name_eng" value=<%=movie.get_m_name_e()%>></td>
+					id="movie_name_eng" value=<%=movie.get_m_name_e().trim()%>></td>
 			</tr>
 			<tr>
 				<td>上映日期：</td>
 				<td><input name="release_date" type="text" id="release_date"
-					value=<%=movie.get_release_date()%>> （格式 1981-01-01）</td>
+					value=<%=movie.get_release_date()%>
+					onfocus="showCalendarControl(this);"> （格式 1981-01-01）</td>
 			</tr>
 			<tr>
 				<td width="185" height="23">版本：<br></td>
 				<td width="353"><input name="version" type="text" id="version"
-					value=<%=movie.get_version()%>></td>
+					value=<%=movie.get_version().trim()%>></td>
 			</tr>
 			<tr>
 				<td width="185" height="23">電影長度(分鐘)：<br></td>
@@ -60,16 +64,16 @@
 			<tr>
 				<td width="185" height="23">演員：<br></td>
 				<td width="353"><input name="actor" type="text" id="actor"
-					value=<%=movie.get_actor()%>></td>
+					value=<%=movie.get_actor().trim()%>></td>
 			</tr>
 			<tr>
 				<td width="185" height="23">導演：<br></td>
 				<td width="353"><input name="director" type="text"
-					id="director" value=<%=movie.get_director() %>></td>
+					id="director" value=<%=movie.get_director().trim() %>></td>
 			</tr>
 			<td width="185" height="23">圖片：<br></td>
 			<td width="353"><input name="picture_url" type="text"
-				id="picture_url" value=<%=movie.get_picture_url() %>></td>
+				id="picture_url" value=<%=movie.get_picture_url().trim() %>></td>
 			</tr>
 
 			<tr>				
