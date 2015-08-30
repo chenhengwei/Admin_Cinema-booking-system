@@ -11,7 +11,6 @@
 Movie movie = new Movie(
 		Integer.valueOf(request.getParameter("id")),"","","","",0,"","","");
 MovieDAO dao = new MovieDAODBImpl();
-
 int count = dao.remove_Movie2(movie);
 String message = "";
 if(count >= 0){

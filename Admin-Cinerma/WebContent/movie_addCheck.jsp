@@ -1,6 +1,6 @@
 <%-- <%@page import="edu.pccu.Movie.MovieDAODBImpl"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.text.*,edu.pccu.Movie.*,java.util.*"%>
+	pageEncoding="UTF-8" import="java.text.*,dao.*,java.util.*"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -16,17 +16,17 @@
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
-		String movie_name_chinese = request.getParameter("movie_name_chinese");
-		String movie_name_eng = request.getParameter("movie_name_eng");
+		String movie_name_chinese = request.getParameter("movie_name_chinese").trim();
+		String movie_name_eng = request.getParameter("movie_name_eng").trim();
 		/* String dateString = request.getParameter("release_date");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date release_date = dateFormat.parse(dateString); */
-		String release_date = request.getParameter("release_date");
-		String version = request.getParameter("version");
+		String release_date = request.getParameter("release_date").trim();
+		String version = request.getParameter("version").trim();
 		int movie_length = Integer.parseInt(request.getParameter("movie_length"));
-		String actor = request.getParameter("actor");
-		String director = request.getParameter("director");
-		String picture_url = request.getParameter("picture_url");
+		String actor = request.getParameter("actor").trim();
+		String director = request.getParameter("director").trim();
+		String picture_url = request.getParameter("picture_url").trim();
 		MovieDAO dao = new MovieDAODBImpl();		
 		Movie add_movie = new Movie(movie_name_chinese, movie_name_eng, release_date, version, movie_length, actor,
 				director, picture_url);
