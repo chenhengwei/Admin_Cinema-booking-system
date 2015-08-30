@@ -17,7 +17,7 @@ public interface MovieDAO {
     //刪除
     public void remove_Movie(Movie movie);
     //刪除(華郁)
-    public int remove_Movie2(Movie movie);    
+    public int remove_Movie2(Movie movie);
     //查詢(電影中文名稱) (前後台)
     public Movie findById_name_c(String movie_name_chinese);
     //查詢(編號)

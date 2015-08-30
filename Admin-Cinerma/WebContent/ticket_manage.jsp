@@ -23,7 +23,7 @@
 				request.setCharacterEncoding("utf-8");
 				String mail_account = request.getParameter("mail_account");
 				String option = String.valueOf(request.getParameter("Submit"));
-				AllJoinDAO dao = new AllJoinDAODBImpl();
+				AllJoinDAO dao = new AllJoinDAODBImpl();				
 				ArrayList<AllJoin> join_list = dao.getAllTickets();
 				if (option.equals("搜尋")) {
 					join_list = dao.getOrderedTickets(mail_account.trim());

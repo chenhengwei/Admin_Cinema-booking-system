@@ -26,7 +26,7 @@
 				TicketDAO dao = new TicketDAODBImpl();
 				ArrayList<Ticket> ticket_list = dao.getAllTickets();
 				if (option.equals("搜尋")) {
-					ticket_list = dao.getOrderedTickets(mail_account.trim());
+					ticket_list = dao.getOrderedTickets(mail_account.trim());					
 				} else if (option.equals("顯示所有訂單")) {
 					ticket_list = dao.getAllTickets();
 				}
