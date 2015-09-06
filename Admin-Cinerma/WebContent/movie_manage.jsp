@@ -105,9 +105,8 @@
 					<td><%=movie.get_m_length()%></td>
 					<td><%=movie.get_actor()%></td>
 					<td><%=movie.get_director()%></td>
-					<td>
-					
-					<%=movie.get_picture_url()%></td>
+					<td><img src="<%=movie.get_picture_url()%>"><br>
+						<%=movie.get_picture_url()%></td>
 					<!-- <td><a href=modify.jsp?id=" + id + ">編輯</a></td> -->
 					<td><a href="movie_edit.jsp?id=<%=movie.get_m_no()%>">編輯</a></td>
 					<td><a href="movie_delete.jsp?id=<%=movie.get_m_no()%>" 
