@@ -4,8 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>客戶訂票訊管理</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客戶訂票資訊管理</title>
 <link rel="stylesheet" href="css/mystyle.css">
+<!-- choose a theme file -->
+<!-- jquery ui -->
+<!-- <link href="tablesorter-master/docs/css/jquery-ui.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="tablesorter-master/css/theme.green.css">
+<!-- load jQuery and tablesorter scripts -->
+<script type="text/javascript" src="jquery/jquery.js"></script>
+<script type="text/javascript" src="tablesorter-master/js/jquery.tablesorter.js"></script>
+
+<!-- tablesorter widgets (optional) -->
+<script type="text/javascript" src="tablesorter-master/js/jquery.tablesorter.widgets.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -31,8 +53,8 @@
 					join_list = dao.getAllTickets();
 				}
 			%>
-			<table border='1'
-				class="table table-striped table-hover table-bordered">
+			<table border='1' class="tablesorter tablesorter-green">
+				<thead>
 				<tr>
 					<th>訂票序號</th>
 					<th>客戶信箱</th>
@@ -54,10 +76,12 @@
 					<!-- <th>編輯</th> -->
 					<th>刪除</th>
 				</tr>
+				<thead>
 				<%
 					if (join_list != null) {						
 						for (AllJoin ticket : join_list) {
 				%>
+				<tbody>
 				<tr>
 					<td><%=ticket.getT_ticket_no()%></td>
 					<td><%=ticket.getMail_account()%></td>
@@ -85,6 +109,7 @@
 					}
 					}
 				%>
+				<tbody>
 			</table>
 		</div>
 	</div>

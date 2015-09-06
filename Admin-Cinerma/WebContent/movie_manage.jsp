@@ -8,18 +8,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>電影資訊管理</title>
 <link rel="stylesheet" href="css/mystyle.css">
+<!-- choose a theme file -->
+<!-- jquery ui -->
+<!-- <link href="tablesorter-master/docs/css/jquery-ui.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="tablesorter-master/css/theme.green.css">
+<!-- load jQuery and tablesorter scripts -->
+<script type="text/javascript" src="jquery/jquery.js"></script>
+<script type="text/javascript" src="tablesorter-master/js/jquery.tablesorter.js"></script>
 
+<!-- tablesorter widgets (optional) -->
+<script type="text/javascript" src="tablesorter-master/js/jquery.tablesorter.widgets.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper" >
 		<div id="header">
 			<h1>電影資訊管理</h1>
-			<form name="form1" method="post" action="">
-				<td></td>
-				<td>電影名稱： <input name="movie_name_chinese" type="text"
+			<form name="form1" method="post" action="">				
+				電影名稱： <input name="movie_name_chinese" type="text"
 					id="movie_name_chinese"> <input type="submit" name="Submit"
 					value="搜尋">
-				</td>
 			</form>
 		</div>
 		<div id="leftbar"></div>
@@ -41,10 +58,10 @@
 				//condition="SELECT * FROM employee_info where employee_name='"+username+"'";
 				movie_list = dao.findByName(movie_name);
 			}
-			String saveDirectory = application.getRealPath("/images");	//取得讀取圖片的路徑
+			/* String saveDirectory = application.getRealPath("/images");	//取得讀取圖片的路徑 */
 		%>
-			<table border='1'
-				class="table table-striped table-hover table-bordered">
+			<table border='1' class="demo tablesorter-green">
+				<thead>
 				<tr>
 					<th>編號</th>
 					<th>電影名稱(中文)</th>
@@ -58,10 +75,27 @@
 					<th>編輯</th>
 					<th>刪除</th>
 				</tr>
+				<thead>
+				
+				<tfoot>
+				<tr>
+					<th>編號</th>
+					<th>電影名稱(中文)</th>
+					<th>電影名稱(英文)</th>
+					<th>上映日期</th>
+					<th>版本</th>
+					<th>長度</th>
+					<th>演員</th>
+					<th>導演</th>
+					<th>圖片</th>
+					<th>編輯</th>
+					<th>刪除</th>
+				</tr></tfoot>
+				<tbody>
 				<%
 				if (movie_list != null) {
 					for (Movie movie : movie_list) {
-			%>
+			%>				
 				<tr>
 					<td><%=movie.get_m_no()%></td>
 					<td><%=movie.get_m_name_c()%></td>
@@ -76,13 +110,15 @@
 					<%=movie.get_picture_url()%></td>
 					<!-- <td><a href=modify.jsp?id=" + id + ">編輯</a></td> -->
 					<td><a href="movie_edit.jsp?id=<%=movie.get_m_no()%>">編輯</a></td>
-					<td><a href="movie_delete.jsp?id=<%=movie.get_m_no()%>"
+					<td><a href="movie_delete.jsp?id=<%=movie.get_m_no()%>" 
 						onclick=return(confirm('確定刪除嗎？'))>刪除</a></td>
 				</tr>
+				
 				<%
 				}
 				}
 			%>
+			<tbody>
 			</table>
 
 
