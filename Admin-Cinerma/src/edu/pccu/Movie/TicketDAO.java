@@ -15,4 +15,9 @@ public interface TicketDAO {
     public int cancel_ticket(Ticket ticket);
     //刪除客戶訂單
     public int remove_ticket(Ticket ticket);
+    //新增訂單(包含更新座位)
+    public int add_ticket(Ticket ticket);
+    
+    public int add_ticket_no(Ticket ticket);
+    
 }

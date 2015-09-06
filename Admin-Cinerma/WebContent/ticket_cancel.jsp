@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>刪除訂票]資訊</title>
+<title>刪除訂票資訊</title>
 </head>
 <body>
 <%
@@ -15,7 +15,7 @@ int count = dao.cancel_ticket(ticket);
 //int count = 1;
 String message = "";
 if(count >= 0){
-	message = "成功取消"+ count +"筆訂單!!";
+	message = "成功取消訂單編號:" + ticket + "的" + count + "個座位";
 }else{
 	message = "資料處理失敗!!";
 }

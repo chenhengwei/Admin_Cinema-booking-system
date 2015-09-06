@@ -17,15 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--  以下2行為日期的元件 -->
  <link href="CalendarControl.css" rel="stylesheet" type="text/css">
  <script src="CalendarControl.js" language="javascript"></script>
- 
-<!--  <meta http-equiv="keywords" content="jsp,信息添加">
- <meta http-equiv="description" content="www.xin126.cn原创教程：JSP员工信息添加页面：add_employee.jsp"> -->
 </head>
 <body>
-
-<form name="form1" method="post" action="movie_addCheck.jsp">
-    
-      <table width="300" border="0" align="center" cellpadding="0" cellspacing="10">
+      <form action="movie_addCheck.jsp" method="POST" enctype="multipart/form-data">
+      <!-- <form action="upload.jsp" method="POST" enctype="multipart/form-data"> -->
+            <table width="300" border="0" align="center" cellpadding="0" cellspacing="10">
         <tr>
           <td width="92"><a href="javascript:history.go(-1)" >返回上一頁</a></td>
           <td width="178">新增電影資訊頁面</td>
@@ -65,7 +61,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td width="353"><input name="director" type="text" id="director"></td>
         </tr>        
           <td width="185" height="23">圖片：<br></td>
-          <td width="353"><input name="picture_url" type="text" id="picture_url"></td>
+          <td width="353"><input name="picture_url" type="file" id="picture_url"></td>
+          <!-- <img src="images/the_assassin.jpg"/> -->
         </tr>
    		
         <tr>          
@@ -76,8 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <input type="submit" name="Submit" value="新增" >
           </td>
         </tr>
-    </table>
-    </form>
+    </table>            
+        </form>
 
 </body>
 </html>

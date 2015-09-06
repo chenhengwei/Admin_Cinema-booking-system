@@ -42,14 +42,15 @@
 					<th>人數</th>
 					<!-- <th>客戶名稱</th> -->
 					<th>有(無)效訂單</th>
-					<th>seat_list</th>
+					
 					<th>電影編號</th>
 					<th>廳別</th>
 					<th>播映時間(合併)</th>
 					<th>座位(合併)</th>
 					<th>座位售出</th>				
 					<th>電影名稱(中文)</th>					
-					<th>版本</th>				
+					<th>版本</th>
+					<th>seat_list</th>				
 					<!-- <th>編輯</th> -->
 					<th>刪除</th>
 				</tr>
@@ -65,8 +66,7 @@
 					<td><%=ticket.getT_session_ID()%></td>
 					<td><%=ticket.getPeople()%></td>
 					<%-- <td><%=ticket.getCustomer_name()%></td> --%>
-					<td><%=ticket.getT_valid()%></td>
-					<td><%=ticket.getSeat_list()%></td>
+					<td><%=ticket.getT_valid()%></td>					
 					<td><%=ticket.getS_movie_no()%></td>
 					<td><%=ticket.getS_room()%></td>
 					<td><%=ticket.getShow_date() + " " + ticket.getShow_time()%></td>
@@ -74,6 +74,7 @@
 					<td><%=ticket.getSold()%></td>
 					<td><%=ticket.getMovie_name_chinese()%></td>					
 					<td><%=ticket.getVersion()%></td>
+					<td><%=ticket.getSeat_list()%></td>
 					
 					<!-- <td><a href=modify.jsp?id=" + id + ">編輯</a></td> -->
 					<%-- <td><a href="movie_edit.jsp?id=<%=movie.get_m_no()%>">編輯</a></td> --%>

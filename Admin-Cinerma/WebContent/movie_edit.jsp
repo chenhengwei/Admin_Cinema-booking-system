@@ -28,7 +28,7 @@
 			<td width="178">修改電影資訊頁面</td>
 		</tr>
 	</table>
-	<form name="form1" action="movie_editCheck.jsp" method="post">
+	<form name="form1" action="movie_editCheck.jsp" method="post" enctype="multipart/form-data">
 		<table width="543" border="0" align="center" cellpadding="0"
 			cellspacing="5">
 			<tr>
@@ -72,8 +72,11 @@
 					id="director" value=<%=movie.get_director().trim() %>></td>
 			</tr>
 			<td width="185" height="23">圖片：<br></td>
-			<td width="353"><input name="picture_url" type="text"
-				id="picture_url" value=<%=movie.get_picture_url().trim() %>></td>
+			<td width="353"><img src="<%=movie.get_picture_url().trim() %>"/>
+			<input name="picture_url" type="file" id="picture_url">
+			<input name="picture_url_origin" type="hidden"id="picture_url_origin" 
+				value=<%=movie.get_picture_url().trim() %>></td>
+			
 			</tr>
 
 			<tr>				

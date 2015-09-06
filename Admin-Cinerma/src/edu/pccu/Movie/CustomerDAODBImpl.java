@@ -66,9 +66,9 @@ public class CustomerDAODBImpl implements MovieDAO {
             Class.forName(DRIVER_NAME);  // 把符合的API 全部都進來 但是會有 expection , try catach 去擷取
             Connection conn = DriverManager.getConnection(CONN_STRING);
             String query = "Insert into ticket_Info "
-                    + "(mail_account, phone_password, order_date, "
-                    + "session_ID, people, customer_name) "
-                    + "values(?,?,?,?,?,?)";
+                         + "(mail_account,phone_password,order_date,"
+                         + "session_ID,people,valid,seat_list)"
+            		 +" VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ppstemt = conn.prepareStatement(query);
 
             //ppstemt.setInt(1, customer.get_C_ticket_no());
@@ -77,8 +77,8 @@ public class CustomerDAODBImpl implements MovieDAO {
             ppstemt.setString(3, customer.get_C_order_date());
             ppstemt.setInt(4, customer.get_C_session_ID());
             ppstemt.setInt(5, customer.get_C_people());
-            ppstemt.setString(6, customer.get_C_customer_name());
-
+            ppstemt.setString(6, customer.getValid());
+            ppstemt.setString(7, customer.getSeat_list());
             ppstemt.executeUpdate();
             ppstemt.cancel();
             conn.close();

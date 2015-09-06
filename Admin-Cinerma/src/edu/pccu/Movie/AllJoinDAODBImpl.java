@@ -28,7 +28,7 @@ public class AllJoinDAODBImpl implements AllJoinDAO{
 					+ "WHERE T.session_ID = S.session_ID AND S.movie_no = M.movie_no";*/
 			String query = "SELECT T.ticket_no,	T.mail_account,	T.phone_password,	T.order_date, "
 					+ "T.session_ID, T.people, T.valid, T.seat_list," + "S.movie_no, S.room, S.show_date, S.show_time,"
-					+ "R.`R-axis`, R.`S-axis`, R.sold," + "M.movie_name_chinese, M.version "
+					+ "R.R, R.S, R.sold," + "M.movie_name_chinese, M.version "
 					+ "FROM	ticket_Info AS T " + "INNER JOIN `session` AS S ON T.session_ID = S.session_ID "
 					+ "INNER JOIN room_seat AS R ON S.room = R.room "
 					+ "INNER JOIN movie_Info AS M ON S.movie_no = M.movie_no "
@@ -69,7 +69,7 @@ public class AllJoinDAODBImpl implements AllJoinDAO{
                     "' AND phone_password = '" + phone_password + "'";*/
             String query = "SELECT T.ticket_no,	T.mail_account,	T.phone_password,	T.order_date, "
 					+ "T.session_ID, T.people, T.valid, T.seat_list," + "S.movie_no, S.room, S.show_date, S.show_time,"
-					+ "R.`R-axis`, R.`S-axis`, R.sold," + "M.movie_name_chinese, M.version "
+					+ "R.R, R.S, R.sold," + "M.movie_name_chinese, M.version "
 					+ "FROM	ticket_Info AS T " + "INNER JOIN `session` AS S ON T.session_ID = S.session_ID "
 					+ "INNER JOIN room_seat AS R ON S.room = R.room "
 					+ "INNER JOIN movie_Info AS M ON S.movie_no = M.movie_no "
@@ -110,7 +110,7 @@ public class AllJoinDAODBImpl implements AllJoinDAO{
             		+ "AND mail_account='" + mail_account + "'";*/
             String query = "SELECT T.ticket_no,	T.mail_account,	T.phone_password,	T.order_date, "
 					+ "T.session_ID, T.people, T.valid, T.seat_list," + "S.movie_no, S.room, S.show_date, S.show_time,"
-					+ "R.`R-axis`, R.`S-axis`, R.sold," + "M.movie_name_chinese, M.version "
+					+ "R.R, R.S, R.sold," + "M.movie_name_chinese, M.version "
 					+ "FROM	ticket_Info AS T " + "INNER JOIN `session` AS S ON T.session_ID = S.session_ID "
 					+ "INNER JOIN room_seat AS R ON S.room = R.room "
 					+ "INNER JOIN movie_Info AS M ON S.movie_no = M.movie_no "
@@ -131,5 +131,29 @@ public class AllJoinDAODBImpl implements AllJoinDAO{
             Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+	}
+
+	@Override
+	public ArrayList<Session> getSession(int movie_no, String show_date) {
+		try {
+            Class.forName(DRIVER_NAME); // 把符合的API 全部都進來 但是會有 expection , try
+            // catch 去擷取
+            Connection conn = DriverManager.getConnection(CONN_STRING);
+            Statement stmt = conn.createStatement();
+            String query = "SELECT S.* FROM `session` AS S "
+            		+ "INNER JOIN movie_Info AS M ON S.movie_no = M.movie_no "
+            		+"WHERE S.movie_no = " + movie_no +" AND S.show_date = '" + show_date +"'";
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<Session> alist = new ArrayList<Session>();
+            while (rs.next()) {
+            	alist.add(new Session(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            }
+            return alist;            
+		} catch (ClassNotFoundException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieDAODBImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		return null;
 	}
 }

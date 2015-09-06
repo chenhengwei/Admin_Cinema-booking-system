@@ -55,7 +55,7 @@
 					<td><%=ticket.getOrder_date()%></td>
 					<td><%=ticket.getSession_ID()%></td>
 					<td><%=ticket.getPeople()%></td>
-					<td><%=ticket.getCustomer_name()%></td>
+					<%-- <td><%=ticket.getCustomer_name()%></td> --%>
 					<!-- <td><a href=modify.jsp?id=" + id + ">編輯</a></td> -->
 					<%-- <td><a href="movie_edit.jsp?id=<%=movie.get_m_no()%>">編輯</a></td> --%>
 					<td><a href="ticket_delete.jsp?id=<%=ticket.getTicket_no()%>"

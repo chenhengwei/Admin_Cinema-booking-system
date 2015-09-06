@@ -41,6 +41,7 @@
 				//condition="SELECT * FROM employee_info where employee_name='"+username+"'";
 				movie_list = dao.findByName(movie_name);
 			}
+			String saveDirectory = application.getRealPath("/images");	//取得讀取圖片的路徑
 		%>
 			<table border='1'
 				class="table table-striped table-hover table-bordered">
@@ -70,7 +71,9 @@
 					<td><%=movie.get_m_length()%></td>
 					<td><%=movie.get_actor()%></td>
 					<td><%=movie.get_director()%></td>
-					<td><%=movie.get_picture_url()%></td>
+					<td>
+					
+					<%=movie.get_picture_url()%></td>
 					<!-- <td><a href=modify.jsp?id=" + id + ">編輯</a></td> -->
 					<td><a href="movie_edit.jsp?id=<%=movie.get_m_no()%>">編輯</a></td>
 					<td><a href="movie_delete.jsp?id=<%=movie.get_m_no()%>"

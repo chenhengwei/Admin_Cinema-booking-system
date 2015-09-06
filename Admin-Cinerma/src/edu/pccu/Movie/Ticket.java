@@ -13,6 +13,17 @@ public class Ticket {
     private String seat_list;
     //private String customer_name;
     
+    //包含新欄位(無ticket_no)
+    public Ticket(String mail_account, String phone_password, String order_date, int session_ID, int people, String valid, String seat_list) {
+        this.mail_account = mail_account;
+        this.phone_password = phone_password;
+        this.order_date = order_date;
+        this.session_ID = session_ID;
+        this.people = people;
+        this.valid = valid;
+        this.seat_list = seat_list;
+    }
+    
     //建構子
     //缺新欄位(有ticket_no)
     public Ticket(int ticket_no, String mail_account, String phone_password, String order_date, int session_ID, int people, String customer_name) {
@@ -38,20 +49,10 @@ public class Ticket {
 		this.seat_list = seat_list;
 	}
     
-    //包含新欄位(無ticket_no)
-	public Ticket(String mail_account, String phone_password, String order_date, int session_ID,
-			int people, String valid, String seat_list) {
-		super();
-		this.mail_account = mail_account;
-		this.phone_password = phone_password;
-		this.order_date = order_date;
-		this.session_ID = session_ID;
-		this.people = people;
-		this.valid = valid;
-		this.seat_list = seat_list;
-	}
+
 	
-	
+	   
+
 	
 	
 	//Getter欄位資料
