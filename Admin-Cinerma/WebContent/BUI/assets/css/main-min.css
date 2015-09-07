@@ -96,34 +96,41 @@ iframe {
 
 .header {	
 	background-color: #1B3160;
-	height: 50px;
+	height: 100px;
 	width: 100%;
 	overflow: auto;
-	/* background: url('../img/menu.jpg') no-repeat 0 0 transparent; */
-  	background-repeat: no-repeat;
+	background: url('../img/maxresdefault.jpg');
+	background-position:left bottom;
+  	/* background-repeat: no-repeat; */
   	padding:5px 10px 0px;
+  	text-shadow:2px 2px 3px #0f0, 10px 10px 3px #f00, -10px -5px 3px #00f;
 } 
 
 .dl-title {
 	float: left;
-	color: #c1d5ec;
+	/* color: #c1d5ec; */	
 	font-family: "Microsoft YaHei";
-	margin-left: 12px;
-	font-size: 18px;
-	line-height: 36px;
+	margin-left: 20px;
+	font-size: 40px;
+	line-height: 50px;
 	/*華郁自加
 	position: absolute;
 	left: 50%;*/
 }
 
 .dl-title a {
-	color: #c1d5ec;
+	/* color: #c1d5ec; */
+	color: #ffffff;
 }
 
 .dl-log {
-	color: #C1D5EC;
+	/* color: #C1D5EC; */
+	color: #ffffff;
 	float: right;
-	padding: 10px 16px 0 0;
+	padding: 50px 16px 0 0;
+	font-size: medium;
+}
+	
 }
 
 .dl-log-user {
@@ -131,7 +138,8 @@ iframe {
 }
 
 .dl-log-quit {
-	color: #c1d5ec;
+	/* color: #c1d5ec; */
+	color: #ffffff;
 	padding-left: 8px;
 }
 
@@ -566,4 +574,5 @@ iframe {
 
 .dl-inner-tab .tab-content-container {
 	background-color: #fff;
+	background: url('../img/Abstract-Orange.jpg');
 }
